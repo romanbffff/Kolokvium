@@ -3,6 +3,7 @@ import java.io.*;
 import java.util.Scanner;
 import java.io.IOException;
 
+
 public class Main {
 
     public static void main(String[] args) throws IOException {
@@ -10,8 +11,8 @@ public class Main {
         try {
             File file = new File("Date.txt");
             PrintWriter pw = new PrintWriter(file);
-            pw.println("-20");  // radius
-            pw.println("40");  // width
+            pw.println("-4");  // radius
+            pw.println("30");  // width
             pw.println("30");  // height
             pw.close();
             br = new BufferedReader(new FileReader("Date.txt"));
@@ -43,6 +44,17 @@ public class Main {
             }
             if (array[1] > array[2] || array[2] > array[1]) {
                 geoShapes.setFigure("rectangle");
+            }
+            geoShapes.transformationGeo_x2();
+            try {
+                File file = new File("Date(update_file).txt");
+                PrintWriter pw = new PrintWriter("Date(update_file).txt");
+                pw.println(geoShapes.getRadius()); // radius_x2
+                pw.println(geoShapes.getWidth());  // width_x2
+                pw.println(geoShapes.getHeight());  // height_x2
+                pw.close();
+            } catch (IOException e) {
+                System.out.println("Error:" + e);
             }
             geoShapes.print();
         }
